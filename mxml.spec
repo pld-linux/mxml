@@ -12,6 +12,7 @@ Source0:	http://www.easysw.com/~mike/mxml/swfiles/%{name}-%{version}.tar.gz
 # Source0-md5:	bd9194cdbf717550a130789802e5b81c
 URL:		http://www.easysw.com/~mike/mxml/software.php
 BuildRequires:	autoconf
+Conflicts:	libmxml
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,6 +25,7 @@ Mini-XML jest ma³± bibliotek± parsuj±c± XML.
 Summary:	Header files for mxml
 Summary(pl):	Pliki nag³ówkowe dla mxml
 Group:		Development/Libraries
+Conflicts:	libmxml-devel
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
