@@ -52,7 +52,7 @@ Statyczna biblioteka mxml.
 
 %build
 %{__autoconf}
-%configure 
+%configure
 %{__make} \
 	OPTFLAGS="%{rpmcflags}"
 
