@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	BUILDROOT=$RPM_BUILD_ROOT
 
-rm -rf $RPM_BUILD_ROOT/%{_docdir}/mxml
+rm -rf $RPM_BUILD_ROOT%{_docdir}/mxml
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,14 +73,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.a
 %{_mandir}/man3/*
 
-%files devel
-%defattr(644,root,root,755)
+#%files devel
+#%defattr(644,root,root,755)
 %doc doc/*.html
 %attr(755,root,root) %{_bindir}/*
 %{_pkgconfigdir}/*.pc
 %{_includedir}/*.h
 %{_mandir}/man1/*
-
 
 #%%files static
 #%%defattr(644,root,root,755)
