@@ -4,12 +4,12 @@
 Summary:	Small XML parsing library
 Summary(pl):	Ma³a biblioteka parsuj±ca XML
 Name:		mxml
-Version:	2.1
+Version:	2.2
 Release:	1
 License:	GPL v.2
 Group:		Libraries
-Source0:	http://www.easysw.com/~mike/mxml/swfiles/%{name}-%{version}.tar.gz
-# Source0-md5:	35f829a907c0319f83a3661591788ed3
+Source0:	http://ftp.easysw.com/pub/mxml/2.2/%{name}-%{version}.tar.gz
+# Source0-md5:	2c28aedee8a06eac173104a3fccce096
 URL:		http://www.easysw.com/~mike/mxml/software.php
 BuildRequires:	autoconf
 Conflicts:	libmxml
@@ -69,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES README TODO
+%doc CHANGES README
 %attr(755,root,root) %{_libdir}/lib*.a
 %{_mandir}/man3/*
 
