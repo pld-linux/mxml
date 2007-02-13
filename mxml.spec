@@ -2,7 +2,7 @@
 # - make it shared
 #
 Summary:	Small XML parsing library
-Summary(pl.UTF-8):   Mała biblioteka parsująca XML
+Summary(pl.UTF-8):	Mała biblioteka parsująca XML
 Name:		mxml
 Version:	2.2
 Release:	1
@@ -23,7 +23,7 @@ Mini-XML jest małą biblioteką parsującą XML.
 
 %package devel
 Summary:	Header files for mxml
-Summary(pl.UTF-8):   Pliki nagłówkowe dla mxml
+Summary(pl.UTF-8):	Pliki nagłówkowe dla mxml
 Group:		Development/Libraries
 Conflicts:	libmxml-devel
 Requires:	%{name} = %{version}-%{release}
@@ -36,7 +36,7 @@ Pliki nagłówkowe dla mxml.
 
 %package static
 Summary:	Static mxml library
-Summary(pl.UTF-8):   Statyczna biblioteka mxml
+Summary(pl.UTF-8):	Statyczna biblioteka mxml
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
