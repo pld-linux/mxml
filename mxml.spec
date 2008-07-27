@@ -5,7 +5,7 @@ Summary:	Small XML parsing library
 Summary(pl.UTF-8):	Mała biblioteka parsująca XML
 Name:		mxml
 Version:	2.2
-Release:	1
+Release:	2
 License:	GPL v.2
 Group:		Libraries
 Source0:	http://ftp.easysw.com/pub/mxml/2.2/%{name}-%{version}.tar.gz
