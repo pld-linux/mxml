@@ -2,7 +2,7 @@ Summary:	Small XML parsing library
 Summary(pl.UTF-8):	Mała biblioteka parsująca XML
 Name:		mxml
 Version:	2.6
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Libraries
 Source0:	http://ftp.easysw.com/pub/mxml/2.6/%{name}-%{version}.tar.gz
@@ -66,6 +66,9 @@ rm -rf $RPM_BUILD_ROOT%{_mandir}/cat3/mxml.3*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
