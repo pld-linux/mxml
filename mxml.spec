@@ -4,12 +4,12 @@
 Summary:	Small XML parsing library
 Summary(pl.UTF-8):	Mała biblioteka parsująca XML
 Name:		mxml
-Version:	2.2
-Release:	2
+Version:	2.6
+Release:	0.1
 License:	GPL v.2
 Group:		Libraries
-Source0:	http://ftp.easysw.com/pub/mxml/2.2/%{name}-%{version}.tar.gz
-# Source0-md5:	2c28aedee8a06eac173104a3fccce096
+Source0:	http://ftp.easysw.com/pub/mxml/2.6/%{name}-%{version}.tar.gz
+# Source0-md5:	68977789ae64985dddbd1a1a1652642e
 URL:		http://www.easysw.com/~mike/mxml/software.php
 BuildRequires:	autoconf
 Conflicts:	libmxml
@@ -63,6 +63,8 @@ rm -rf $RPM_BUILD_ROOT
 	BUILDROOT=$RPM_BUILD_ROOT
 
 rm -rf $RPM_BUILD_ROOT%{_docdir}/mxml
+rm -rf $RPM_BUILD_ROOT/usr/share/man/cat1/mxmldoc.1*
+rm -rf $RPM_BUILD_ROOT/usr/share/man/cat3/mxml.3*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
