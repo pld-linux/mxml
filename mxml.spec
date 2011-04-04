@@ -2,11 +2,12 @@ Summary:	Mini-XML: Lightweight XML Library
 Summary(pl.UTF-8):	Mała biblioteka parsująca XML
 Name:		mxml
 Version:	2.6
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Libraries
 Source0:	http://ftp.easysw.com/pub/mxml/2.6/%{name}-%{version}.tar.gz
 # Source0-md5:	68977789ae64985dddbd1a1a1652642e
+Patch0:		%{name}-lpthread.patch
 URL:		http://www.minixml.org/
 BuildRequires:	autoconf
 BuildRequires:	sed >= 4.0
@@ -55,6 +56,7 @@ Statyczna biblioteka mxml.
 
 %prep
 %setup -q
+%patch0 -p1
 %{__sed} -i -e 's/OPTIM="-O"/OPTIM=$OPTFLAGS/' configure.in
 
 %build
