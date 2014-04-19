@@ -1,12 +1,12 @@
-Summary:	Mini-XML: Lightweight XML Library
-Summary(pl.UTF-8):	Mała biblioteka parsująca XML
+Summary:	Mini-XML: Lightweight XML support library
+Summary(pl.UTF-8):	Mini-XML - lekka biblioteka obsługująca XML
 Name:		mxml
-Version:	2.6
-Release:	3
-License:	GPL v2
+Version:	2.8
+Release:	1
+License:	LGPL v2 with exceptions
 Group:		Libraries
-Source0:	http://ftp.easysw.com/pub/mxml/2.6/%{name}-%{version}.tar.gz
-# Source0-md5:	68977789ae64985dddbd1a1a1652642e
+Source0:	http://www.msweet.org/files/project3/%{name}-%{version}.tar.gz
+# Source0-md5:	d85ee6d30de053581242c4a86e79a5d2
 Patch0:		%{name}-lpthread.patch
 URL:		http://www.minixml.org/
 BuildRequires:	autoconf
@@ -27,26 +27,35 @@ names, attributes, and attribute values are supported with no preset
 limits, just available memory.
 
 %description -l pl.UTF-8
-Mini-XML jest małą biblioteką parsującą XML.
+Mini-XML to mała biblioteka XML, której można używać do odczytu i
+zapisu plików w formacie XML i zbliżonym do XML w aplikacjach nie
+wymagających dużych, niestandardowych bibliotek.
+
+Mini-XML obsługuje odczyt plików i łańcuchów XML zakodowanych w UTF-8
+i UTF-16 oraz zapisu w UTF-8. Dane są przechowywane w listowej
+strukturze drzewiastej, z zachowaniem hierarchii danych XML;
+obsługiwane są dowolne nazwy, atrybuty i wartości atrybutów elementów
+bez narzuconych limitów poza dostępną pamięcią.
 
 %package devel
-Summary:	Header files for mxml
-Summary(pl.UTF-8):	Pliki nagłówkowe dla mxml
+Summary:	Header files for mxml library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki mxml
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Conflicts:	libmxml-devel
 
 %description devel
-Header files for mxml.
+Header files for mxml library.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe dla mxml.
+Pliki nagłówkowe biblioteki mxml.
 
 %package static
 Summary:	Static mxml library
 Summary(pl.UTF-8):	Statyczna biblioteka mxml
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Conflicts:	libmxml-static
 
 %description static
 Static mxml library.
@@ -57,14 +66,15 @@ Statyczna biblioteka mxml.
 %prep
 %setup -q
 %patch0 -p1
-%{__sed} -i -e 's/OPTIM="-O"/OPTIM=$OPTFLAGS/' configure.in
+
+%{__sed} -i -e '/^\.SILENT/d' Makefile.in
 
 %build
 %{__autoconf}
 %configure \
 	--enable-shared
 %{__make} \
-	OPTFLAGS="%{rpmcflags}"
+	OPTIM="%{rpmcflags} -fPIC"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -72,9 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	BUILDROOT=$RPM_BUILD_ROOT
 
-rm -rf $RPM_BUILD_ROOT%{_docdir}/mxml
-rm -f $RPM_BUILD_ROOT%{_mandir}/cat1/mxmldoc.1*
-rm -f $RPM_BUILD_ROOT%{_mandir}/cat3/mxml.3*
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/mxml
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -84,20 +92,21 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES README
+# COPYING contains exceptions to LGPL
+%doc CHANGES COPYING README
+%attr(755,root,root) %{_bindir}/mxmldoc
 %attr(755,root,root) %{_libdir}/libmxml.so.*.*
 %attr(755,root,root) %ghost %{_libdir}/libmxml.so.1
-%attr(755,root,root) %{_bindir}/mxmldoc*
 %{_mandir}/man1/mxmldoc.1*
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/*.html
-%{_libdir}/libmxml.so
-%{_pkgconfigdir}/*.pc
-%{_includedir}/*.h
+%attr(755,root,root) %{_libdir}/libmxml.so
+%{_pkgconfigdir}/mxml.pc
+%{_includedir}/mxml.h
 %{_mandir}/man3/mxml.3*
 
 %files static
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.a
+%attr(755,root,root) %{_libdir}/libmxml.a

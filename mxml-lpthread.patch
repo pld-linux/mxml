@@ -1,11 +1,11 @@
---- mxml-2.6/Makefile.in.orig	2008-12-06 05:20:38.000000000 +0100
-+++ mxml-2.6/Makefile.in	2011-04-04 13:08:43.000000000 +0200
-@@ -256,7 +256,7 @@
- #
+--- mxml-2.8/Makefile.in.orig	2014-04-19 10:26:41.746170424 +0200
++++ mxml-2.8/Makefile.in	2014-04-19 10:37:35.666156796 +0200
+@@ -297,7 +297,7 @@
  
- libmxml.so.1.4:	$(LIBOBJS)
--	$(DSO) $(DSOFLAGS) -o libmxml.so.1.4 $(LIBOBJS)
-+	$(DSO) $(DSOFLAGS) -o libmxml.so.1.4 $(LIBOBJS) -lpthread
+ libmxml.so.1.5:	$(LIBOBJS)
+ 	echo Creating $@...
+-	$(DSO) $(DSOFLAGS) -o libmxml.so.1.5 $(LIBOBJS)
++	$(DSO) $(DSOFLAGS) -o libmxml.so.1.5 $(LIBOBJS) -lpthread
  	$(RM) libmxml.so libmxml.so.1
- 	$(LN) libmxml.so.1.4 libmxml.so
- 	$(LN) libmxml.so.1.4 libmxml.so.1
+ 	$(LN) libmxml.so.1.5 libmxml.so
+ 	$(LN) libmxml.so.1.5 libmxml.so.1
