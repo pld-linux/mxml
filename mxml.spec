@@ -1,12 +1,12 @@
 Summary:	Mini-XML: Lightweight XML support library
 Summary(pl.UTF-8):	Mini-XML - lekka biblioteka obsługująca XML
 Name:		mxml
-Version:	2.9
-Release:	2
+Version:	2.10
+Release:	1
 License:	LGPL v2 with exceptions
 Group:		Libraries
 Source0:	http://www.msweet.org/files/project3/%{name}-%{version}.tar.gz
-# Source0-md5:	e21cad0f7aacd18f942aa0568a8dee19
+# Source0-md5:	8804c961a24500a95690ef287d150abe
 Patch0:		%{name}-lpthread.patch
 URL:		http://www.minixml.org/
 BuildRequires:	autoconf
