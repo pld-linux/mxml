@@ -65,7 +65,7 @@ Statyczna biblioteka mxml.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__sed} -i -e '/^\.SILENT/d' Makefile.in
 
